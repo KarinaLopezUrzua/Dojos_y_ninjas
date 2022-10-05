@@ -1,0 +1,33 @@
+{% extends "index.html"%}
+
+{% block contenido %}
+
+<h1 class="text-center">Información de los usuarios del Dojo {{dojo.nombre}}</h1>
+<hr class="border border-secondary border-2 opacity-50">
+
+<table class="table">
+    <thead class="table-info">
+        <tr>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Edad</td>
+            <td>Fecha de registro</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ninja in dojo_y_ninja %} {# dojo_y_ninja es la variable creada en controlador_dojo#}
+        <tr>
+            <td>{{ninja.nombre}}</td> {# ninja(variable).nombre(atributo de los objetos de la clase Ninjas)#}
+            <td>{{ninja.apellido}}</td>
+            <td>{{ninja.edad}}</td>
+            <td>{{ninja.created_at}}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+<div>
+    <a href="/" class="btn btn-primary">Volver al inicio</a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "index.html"%}
+
+{% block contenido %}
+
+
+<h1 class="text-center">Información Dojos</h1>
+<hr class="border border-secondary border-2 opacity-50">
+
+<div>
+<div class="row">
+<div class="col">
+    <h4>Nuevo Dojo</h4>
+    <form class="row g-3" action='/crear_dojo' method='post'>
+        <div class="col-md-8">
+            <label for='name' class="form-label">Nombre</label>
+            <input type='text' class="form-control" name='nombre'>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md">
+            <button type="submit" class="btn btn-primary me-md-2">Crear Dojo</button>
+        </div>
+    </form>
+</div>
+
+<div class="col">
+    <h4> Todos los Dojos</h4>
+    <table class="table table-sm">
+        <thead> <!--class="table-light"-->
+            <tr>
+                <td>Ubicación Dojo</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dojo in lista_dojos: %} {# lista_dojos es la variable creada en controlador#}
+            <tr>
+                <td> - <a href="/dojos/{{dojo.id}}">{{dojo.nombre}}</a></td> {# dojo(variable).nombre(atributo de los objetos de la clase Dojos)#}
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <a href="/ninja" class="btn btn-secondary">Crear Ninja</a>
+</div>
+</div>
+</div>
+{% endblock %}

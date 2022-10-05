@@ -1,0 +1,49 @@
+{% extends "index.html"%}
+
+{% block contenido %}
+
+    <h1 class="text-center">Formulario de registro Ninja</h1>
+    <hr class="border border-secondary border-2 opacity-50">
+
+
+    <h4>Crea un ninja</h4>
+
+    <form class="row g-3" action='/crear_ninja' method='post'>
+        <!--action: es la ruta que procesa el formulario // method: las opciones son GET y POST-->
+        <div class="col-md-8">
+            <label for='ubicacion' class="form-label">Ubicación Dojo</label>
+            <select class="form-control" name='ubicacion'>
+                {% for dojo in lista_dojos %}
+                <option value="{{dojo.id}}">{{dojo.nombre}}</option> <!--en value vamos a acceder al atributo dojo.id de class dojo, que este asociado en la tabla de ninjas en la bd-->
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-8">
+            <label for='name' class="form-label">Nombre</label>
+            <input type='text' class="form-control" name='nombre'>
+            <!--input: recopilan datos del usuario-->
+        </div>
+
+        <div class="col-md-8">
+            <label for='apellido' class="form-label">Apellido</label>
+            <input type="text" class="form-control" name='apellido'>
+        </div>
+        
+        <div class="col-md-8">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="text" class="form-control" name='edad'>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="acepto" required>
+            <label for="acepto">He leído y acepto los términos y condiciones de uso</label>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md">
+            <button type="submit" class="btn btn-primary me-md-2">Agregar Ninja</button>
+            <a href="/" class="btn btn-secondary">Volver al inicio</a>
+        </div>
+        <!--formas de enviar un formulario... <input type='submit'> o <button>Submit</button> -->
+    </form>
+
+{% endblock %}
